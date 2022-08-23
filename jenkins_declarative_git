@@ -1,10 +1,19 @@
 pipeline{
     agent any
+    
+    evironment{
+         PATH = "/opt/maven3/bin:$PATH"
     stages{
         stage("welcome"){
             steps{
                git credentialsId: 'siva_github', url: 'https://github.com/srkdevops1991/maven-web-application.git'
             }
         }
-    }
+        stage("Maven Build"){
+            steps{
+            sh "mvn clean package"
+            }
+        }
+    }   
+    
 }
