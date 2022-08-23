@@ -3,6 +3,7 @@ pipeline{
     
     evironment{
          PATH = "/opt/maven3/bin:$PATH"
+     }    
     stages{
         stage("welcome"){
             steps{
@@ -11,7 +12,7 @@ pipeline{
         }
         stage("Maven Build"){
             steps{
-            sh "mvn clean package"
+                sh "mvn clean package"
             }
         }
     }   
