@@ -15,6 +15,16 @@ pipeline{
                 sh "mvn clean package"
             }
         }
+        
+        stage('tomcat-deploy'){
+       steps{
+sshagent(['tomcat']) {
+                       
+       sh "scp -o  StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline1/target/maven-web-application.war ec2-user@3.111.33.112:/opt/tomcat10/webapps/maven-web-application.war"
+                                }
+    
+    }
+    }
     }   
     
 }
